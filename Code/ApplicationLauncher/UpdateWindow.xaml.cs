@@ -7,22 +7,25 @@ using System.Windows;
 
 namespace ApplicationLauncher
 {
+	/// <summary>
+	/// Main launcher "Update" window.
+	/// </summary>
 	public partial class UpdateWindow
 	{
-		public UpdateWindow()
+		internal UpdateWindow()
 		{
 			InitializeComponent();
 		}
 
 		#region Properties
 
-		public IUpdateService UpdateService
+		internal IUpdateService UpdateService
 		{ get; set; }
 
-		public UpdateDescription Update
+		internal UpdateDescription Update
 		{ get; set; }
 
-		public LauncherConfig Config
+		internal LauncherConfig Config
 		{ get; set; }
 
 		#endregion

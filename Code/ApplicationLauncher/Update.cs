@@ -6,17 +6,29 @@ using System.Runtime.Serialization;
 
 namespace ApplicationLauncher
 {
+	/// <summary>
+	/// Update itself.
+	/// </summary>
 	[Serializable, DataContract]
 	public class Update
 	{
+		/// <summary>
+		/// Zipped update files.
+		/// </summary>
 		[DataMember]
 		public byte[] ZipWithChanges
 		{ get; set; }
 
+		/// <summary>
+		/// Name of install file if required. Otherwise, all files just will be moved to application directory with overwrite.
+		/// </summary>
 		[DataMember]
 		public string Executable
 		{ get; set; }
 
+		/// <summary>
+		/// ctor.
+		/// </summary>
 		public Update()
 		{
 			ZipWithChanges = new byte[0];
@@ -24,7 +36,7 @@ namespace ApplicationLauncher
 
 		#region Install
 
-		public void Install(DirectoryInfo updateDirectory)
+		internal void Install(DirectoryInfo updateDirectory)
 		{
 			string zipFileName = Path.Combine(updateDirectory.FullName, "_update.zip");
 			File.WriteAllBytes(zipFileName, ZipWithChanges);

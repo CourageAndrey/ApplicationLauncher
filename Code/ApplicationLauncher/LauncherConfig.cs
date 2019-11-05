@@ -6,31 +6,52 @@ using System.Xml.Serialization;
 
 namespace ApplicationLauncher
 {
+	/// <summary>
+	/// Application launcher configuration.
+	/// </summary>
 	[XmlType, XmlRoot]
 	public class LauncherConfig
 	{
 		#region Properties
 
+		/// <summary>
+		/// URL of update server.
+		/// </summary>
 		[XmlElement]
 		public string UpdateServerUrl
 		{ get; set; }
 
+		/// <summary>
+		/// Application name, checking on server.
+		/// </summary>
 		[XmlElement]
 		public string ApplicationName
 		{ get; set; }
 
+		/// <summary>
+		/// Path to application EXE-file.
+		/// </summary>
 		[XmlElement]
 		public string ApplicationStartupPath
 		{ get; set; }
 
+		/// <summary>
+		/// Installed application version.
+		/// </summary>
 		[XmlElement]
 		public string ApplicationVersion
 		{ get; set; }
 
+		/// <summary>
+		/// Update version, which has to be ignored.
+		/// </summary>
 		[XmlElement]
 		public string SkipVersion
 		{ get; set; }
 
+		/// <summary>
+		/// Update checking method.
+		/// </summary>
 		[XmlElement]
 		public CheckUpdateStrategy CheckUpdateStrategy
 		{ get; set; }
@@ -51,6 +72,10 @@ namespace ApplicationLauncher
 			_configFileName = Path.Combine(startupPath, "LauncherConfig.xml");
 		}
 
+		/// <summary>
+		/// Load from XML file.
+		/// </summary>
+		/// <returns>launcher configuration</returns>
 		public static LauncherConfig Load()
 		{
 			try
@@ -67,6 +92,9 @@ namespace ApplicationLauncher
 			}
 		}
 
+		/// <summary>
+		/// Save to XML file.
+		/// </summary>
 		public void Save()
 		{
 			var xmlDocument = new XmlDocument();
